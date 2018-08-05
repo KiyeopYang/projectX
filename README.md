@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create Next App](https://github.com/segmentio/create-next-app).
 
 Find the most recent version of this guide at [here](https://github.com/segmentio/create-next-app/blob/master/lib/templates/default/README.md). And check out [Next.js repo](https://github.com/zeit/next.js) for the most up-to-date info.
@@ -232,3 +233,8 @@ You can find more details about [`now` here](https://zeit.co/now).
 ## Something Missing?
 
 If you have ideas for how we could improve this readme or the project in general, [let us know](https://github.com/segmentio/create-next-app/issues) or [contribute some!](https://github.com/segmentio/create-next-app/edit/master/lib/templates/default/README.md)
+=======
+# projectX
+
+2018.08.05 생성 "건강 기능 식품 추천"
+>>>>>>> de579a4703d28155dbb2db5353bd176bec2da646
