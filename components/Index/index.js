@@ -28,20 +28,24 @@ class Component extends React.Component {
     }
   }
   render() {
-    const { classes } = this.props;
-    const { selected, view } = this.state;
+    const { selected } = this.state;
     return (
       <div>
         <Select
           selected={selected}
           handleSelect={this.handleBlockSelect}
-          handleSubmit={() => (
+        />
+        <BottomButton
+          color={selected.length ? "primary" : "secondary"}
+          onClick={() => (
             Router.push({
               pathname: '/list',
               query: { selected },
             })
           )}
-        />
+        >
+          {selected.length ? "선택 완료" : "넘어가기"}
+        </BottomButton>
       </div>
     );
   }

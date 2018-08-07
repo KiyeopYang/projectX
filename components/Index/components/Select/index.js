@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import classnames from 'classnames';
-import Button from '@material-ui/core/Button';
 import BottomButton from '../../../BottomButton';
 
 const Items = [
@@ -52,7 +51,7 @@ const styles = theme => ({
 });
 class Component extends React.Component {
   render() {
-    const { classes, selected, handleSelect, handleSubmit } = this.props;
+    const { classes, selected, handleSelect } = this.props;
     return (
       <React.Fragment>
         <div className={classes.title}>
@@ -91,12 +90,6 @@ class Component extends React.Component {
             ))
           }
         </GridList>
-        <BottomButton
-          color={selected.length ? "primary" : "secondary"}
-          onClick={handleSubmit}
-        >
-          {selected.length ? "선택 완료" : "넘어가기"}
-        </BottomButton>
       </React.Fragment>
     );
   }

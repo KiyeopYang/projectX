@@ -1,9 +1,7 @@
 import React from 'react'
 import { Container } from 'next/app';
-import Link from 'next/link'
 import Head from '../components/head';
 import Ing from '../components/Ing';
-import { resolve } from 'path';
 
 class Route extends React.Component {
   static getInitialProps({ query: { selected, ing }}) {

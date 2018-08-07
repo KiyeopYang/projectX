@@ -6,7 +6,8 @@ import Button from '@material-ui/core/Button';
 const styles = {
   buttonWrapper: {
     margin: 'auto',
-    width: 320,
+    width: '100%',
+    maxWidth: 500,
   },
   button: {
     borderRadius: 0,

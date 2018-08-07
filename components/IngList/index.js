@@ -1,14 +1,11 @@
 import React from 'react';
-import Router from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import Text from '@material-ui/core/Typography'
-import { isArray } from 'util';
+import Router from 'next/router';
+import BottomButton from '../BottomButton';
 
 const Ingredients = [
   {
@@ -78,7 +75,8 @@ const styles = theme => ({
   list: {
     paddingTop: 0,
     paddingBottom: 0,
-    width: 500,
+    width: '100%',
+    maxWidth: 500,
     margin: 'auto',
   },
 });
@@ -92,7 +90,7 @@ class Component extends React.Component {
       const pro = o.property.map(oo => oo);
       if (selected) {
         let sel = selected;
-        if (!isArray(selected)) {
+        if (!Array.isArray(selected)) {
           sel = [selected];
         }
         sel.forEach((oo) => {
@@ -152,6 +150,16 @@ class Component extends React.Component {
         <List className={classes.list}>
           {Items.map(o => o.Ele)}
         </List>
+        <BottomButton
+          color="secondary"
+          onClick={() => (
+            Router.push({
+              pathname: '/',
+            })
+          )}
+        >
+          뒤로가기
+        </BottomButton>
       </div>
     );
   }

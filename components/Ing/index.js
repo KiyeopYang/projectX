@@ -1,8 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import Text from '@material-ui/core/Typography'
+import Router from 'next/router';
+import BottomButton from '../BottomButton';
 
 const Ingredients = [
   {
@@ -69,26 +70,67 @@ const styles = theme => ({
   chip: {
     height: 24,
   },
-  listItem: {
-    display: 'block'
-  },
-  list: {
-    paddingTop: 0,
-    paddingBottom: 0,
-    width: 500,
+  layout: { 
+    width: '100%',
+    maxWidth: 500,
     margin: 'auto',
   },
+  center: {
+    textAlign: 'center',
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
+  },
+  desc: {
+    margin: theme.spacing.unit * 3,
+  }
 });
 class Component extends React.Component {
-  render() {
+  makeChip({ property }) {
     const { classes, selected } = this.props;
-   
+    const ts = Array.isArray(selected) ? selected : [selected];
+    let chips = property.filter(o => ts.includes(o)).map(o => (
+      <Chip
+        className={classes.chip}
+        key={o}
+        label={o}
+        color="primary"
+      />
+    ));
+    chips = chips.concat(property.filter(o => !ts.includes(o)).map(o => (
+      <Chip
+        className={classes.chip}
+        key={o}
+        label={o}
+      />
+    )));
+    return chips;
+  }
+  render() {
+    const { classes, ing, selected } = this.props;
+    const found = Ingredients.find(o => o.name.kr === ing);
     return (
       <div className={classes.layout}>
-        <Text>오메가-3</Text>
-        <Text>Omega-3</Text>
-        <div>
+        <Text className={classes.center} variant="headline">{found.name.kr}</Text>
+        <Text className={classes.center} variant="headline">{found.name.en}</Text>
+        <div className={classes.center}>
+          {
+            this.makeChip({ property: found.property })
+          }
         </div>
+        <div className={classes.desc}>
+          <Text>{found.desc.default}</Text>
+        </div>
+        <BottomButton
+          color="secondary"
+          onClick={() => (
+            Router.push({
+              pathname: '/list',
+              query: { selected },
+            })
+          )}
+        >
+          뒤로가기
+        </BottomButton>
       </div>
     );
   }
