@@ -6,5 +6,10 @@ module.exports = {
     }
 
     return config
-  }
+  },
+  exportPathMap: () => ({
+    '/': { page: '/' },
+    '/ing': { page: '/ing' },
+    '/list': { page: '/list '},
+  }),
 }
